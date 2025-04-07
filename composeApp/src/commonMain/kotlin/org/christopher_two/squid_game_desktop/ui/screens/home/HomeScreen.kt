@@ -13,8 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -33,6 +35,15 @@ fun HomeScreen(
 ) {
     val state by viewModel.state.collectAsState()
     val navControllerGames = rememberNavController()
+    LaunchedEffect(Unit) {
+        viewModel.observe()
+    }
+    LaunchedEffect(state.statusPlayers) {
+        viewModel.updateRenewed()
+    }
+    LaunchedEffect(Unit) {
+        viewModel.observeServos()
+    }
     LazyColumn(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -42,11 +53,15 @@ fun HomeScreen(
             .padding(10.dp)
     ) {
         item {
-            Info(totalPlayers = 455, rewards = "₩455,555,555")
+            state.statusPlayers?.also { list ->
+                Info(totalPlayers = list.size, rewards = state.rewards)
+            } ?: run {
+                CircularProgressIndicator()
+            }
             Spacer(modifier = Modifier.size(10.dp))
         }
         item {
-            Games(navController = navControllerGames, state = state)
+            Games(navController = navControllerGames, state = state, viewModel = viewModel)
             Spacer(modifier = Modifier.size(10.dp))
         }
         item {
@@ -67,9 +82,9 @@ fun HomeScreen(
                         shape = RoundedCornerShape(16.dp)
                     )
                     .fillMaxWidth()
-                    .height(500.dp),
+                    .height(700.dp),
             ) {
-                Players(state)
+                Players(state, viewModel)
                 Spacer(modifier = Modifier.size(10.dp))
             }
         }

@@ -36,6 +36,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import squid_game_desktop.composeapp.generated.resources.Res
 import squid_game_desktop.composeapp.generated.resources.paid_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import squid_game_desktop.composeapp.generated.resources.savings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import squid_game_desktop.composeapp.generated.resources.sentiment_satisfied_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 
 @Composable
@@ -58,7 +59,7 @@ fun Info(totalPlayers: Int, rewards: String) {
                 info = "Rewards",
                 content = rewards,
                 modifier = Modifier.fillMaxWidth(),
-                icon = Res.drawable.paid_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24,
+                icon = Res.drawable.savings_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24,
                 color = MaterialTheme.colorScheme.onSecondary
             )
         }

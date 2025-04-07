@@ -34,7 +34,9 @@ fun Controller(state: HomeState, viewModel: HomeViewModel, navController: NavCon
                 viewModel = viewModel,
                 navController = navController
             )
-            ControllerGame()
+            ControllerGame(
+                viewModel = viewModel
+            )
         }
     )
 }

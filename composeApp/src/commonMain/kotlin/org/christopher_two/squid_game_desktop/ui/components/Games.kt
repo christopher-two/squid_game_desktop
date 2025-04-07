@@ -21,10 +21,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import org.christopher_two.squid_game_desktop.ui.navcontroller.NavControllerGames
+import org.christopher_two.squid_game_desktop.ui.screens.home.HomeViewModel
 import org.christopher_two.squid_game_desktop.utils.data.HomeState
 
 @Composable
-fun Games(navController: NavHostController, state: HomeState) {
+fun Games(navController: NavHostController, state: HomeState, viewModel: HomeViewModel) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
@@ -46,7 +47,7 @@ fun Games(navController: NavHostController, state: HomeState) {
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace
             )
-            NavControllerGames(navController = navController)
+            NavControllerGames(navController = navController, state = state, viewModel = viewModel)
         }
     }
 }

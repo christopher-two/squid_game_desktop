@@ -35,6 +35,7 @@ kotlin {
         val desktopMain by getting
         
         commonMain.dependencies {
+            implementation(projects.network.firebase)
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -48,8 +49,18 @@ kotlin {
             implementation(libs.koin.compose.viewModel)
             implementation(libs.koin.core)
             implementation(libs.navigation.compose)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.loggin)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation("com.google.firebase:firebase-admin:9.2.0")
+            implementation("com.google.guava:guava:31.1-jre")
+            implementation("org.slf4j:slf4j-simple:2.0.7")
+            implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+            implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
         }
         desktopMain.dependencies {
+            implementation(libs.ktor.client.cio)
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
         }

@@ -15,11 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.christopher_two.squid_game_desktop.ui.components.Widget
+import org.christopher_two.squid_game_desktop.ui.screens.home.HomeViewModel
 import squid_game_desktop.composeapp.generated.resources.Res
 import squid_game_desktop.composeapp.generated.resources.*
 
 @Composable
-fun ControllerGame() {
+fun ControllerGame(
+    viewModel: HomeViewModel
+) {
     Box(
         modifier = Modifier.fillMaxWidth().height(300.dp),
         contentAlignment = Alignment.Center,
@@ -46,12 +49,14 @@ fun ControllerGame() {
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     Widget(
-                        info = "Kill Player",
-                        onClick = { /*TODO*/ },
+                        info = "Skip Glass",
+                        onClick = {
+                            viewModel.skipGlass()
+                        },
                         modifier = Modifier.width(700.dp).height(100.dp),
-                        color = Color(0xFFa71922),
+                        color = Color(0xff1941a7),
                         isSelect = false,
-                        icon = Res.drawable.skull_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                        icon = Res.drawable.crop_square_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
                     )
                     Spacer(modifier = Modifier.weight(1f))
                 }
@@ -73,7 +78,9 @@ fun ControllerGame() {
                     Spacer(modifier = Modifier.weight(1f))
                     Widget(
                         info = "Restart",
-                        onClick = { /*TODO*/ },
+                        onClick = {
+                            viewModel.restart()
+                        },
                         modifier = Modifier.width(700.dp).height(100.dp),
                         color = Color(0xFF905adf),
                         isSelect = false,

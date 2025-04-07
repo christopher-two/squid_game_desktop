@@ -34,6 +34,7 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import com.network.firebase.repositoryimpl.FirebaseAdmin
 import org.christopher_two.squid_game_desktop.di.initKoin
 import org.christopher_two.squid_game_desktop.ui.theme.TitleFont
 import org.jetbrains.compose.resources.painterResource
@@ -44,6 +45,7 @@ import squid_game_desktop.composeapp.generated.resources.circle_24dp_E8EAED_FILL
 import squid_game_desktop.composeapp.generated.resources.crop_square_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 
 fun main() = application {
+    FirebaseAdmin.initialize()
     val windowState = rememberWindowState(
         width = 1280.dp,
         height = 720.dp,
